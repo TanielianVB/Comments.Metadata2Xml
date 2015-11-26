@@ -16,5 +16,10 @@ namespace Comments.Metadata2Xml
         {
             InitializeComponent();
         }
+
+        private void _rtbMetadata_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
