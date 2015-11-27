@@ -51,7 +51,7 @@ namespace Comments.Metadata2Xml
                             .Select(p => new
                             {
                                 Type = p[0].Trim(' ', ':').Substring(2),
-                                Description = p[1].Trim(' ').Split('\n').Select(t => t.Trim(' ')).Join(" ")
+                                Description = p[1].Trim(' ').Split('\n').Select(t => t.Trim(' ')).Join(" ").Trim(' ')
                             });
                         xml += exceptions.Select(p => "/// <exception cref=\"" + p.Type + "\">" + p.Description + "</exception>").Join("\n") + "\n";
                     }
