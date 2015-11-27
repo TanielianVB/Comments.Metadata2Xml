@@ -28,7 +28,9 @@ namespace Comments.Metadata2Xml
                 }
                 else if (group.StartsWith("Parameters"))
                 {
-
+                    var parametersText = Regex.Split(group.Substring("Parameters:\n".Length), "\n\n").Where(s => !s.IsNullOrWhiteSpace()).Select(s => s.Trim(' '));
+                    var parameters = parametersText.Select(s => s.Split('\n')).Select(p => new { Name = p[0].Trim(' ', ':'), Description = p[1].Trim(' ') });
+                    xml += parameters.Select(p => "/// <param name=\"" + p.Name + "\">" + p.Description + "</param>").Join("\n") + "\n";
                 }
                 else if (group.StartsWith("Returns"))
                 {
