@@ -28,13 +28,19 @@ namespace Comments.Metadata2Xml
                 }
                 else if (group.StartsWith("Parameters"))
                 {
-                    var parametersText = Regex.Split(group.Substring("Parameters:\n".Length), "\n\n").Where(s => !s.IsNullOrWhiteSpace()).Select(s => s.Trim(' '));
-                    var parameters = parametersText.Select(s => s.Split('\n')).Select(p => new { Name = p[0].Trim(' ', ':'), Description = p[1].Trim(' ') });
+                    var parametersTexts = Regex.Split(group.Substring("Parameters:\n".Length), "\n\n").Where(s => !s.IsNullOrWhiteSpace()).Select(s => s.Trim(' '));
+                    var parameters = parametersTexts.Select(s => Regex.Split(s, ":\n"))
+                        .Select(p => new
+                        {
+                            Name = p[0].Trim(' ', ':'),
+                            Description = p[1].Trim(' ').Split('\n').Select(t => t.Trim(' ')).Join(" ")
+                        });
                     xml += parameters.Select(p => "/// <param name=\"" + p.Name + "\">" + p.Description + "</param>").Join("\n") + "\n";
                 }
                 else if (group.StartsWith("Returns"))
                 {
-
+                    var returns = group.Substring("Returns:".Length).Split('\n').Where(s => !s.IsNullOrWhiteSpace()).Select(s => s.Trim(' ')).Join(" ");
+                    xml += "/// <returns>" + returns + "</returns>\n";
                 }
                 else if (group.StartsWith("Exceptions"))
                 {
