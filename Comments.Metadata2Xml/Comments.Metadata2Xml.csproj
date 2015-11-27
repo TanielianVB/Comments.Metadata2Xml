@@ -34,8 +34,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SuperExtensions, Version=0.0.1.19253, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SuperExtensions.0.0.1\lib\SuperExtensions.dll</HintPath>
+    <Reference Include="SuperExtensions, Version=0.2.5809.27954, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SuperExtensions.0.2\lib\SuperExtensions.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

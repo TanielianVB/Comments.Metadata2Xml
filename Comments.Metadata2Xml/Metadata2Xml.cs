@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using SuperExtensions;
 
@@ -19,7 +18,7 @@ namespace Comments.Metadata2Xml
             {
                 string xml = "";
 
-                var groups = Regex.Replace(_rtbMetadata.Text, @" *\/\/ ?", "").Trim('\n').Split(@"\n\n(?=[A-Z])");
+                var groups = _rtbMetadata.Text.ReplacePattern(@" *\/\/ ?", "").Trim('\n').Split(@"\n\n(?=[A-Z])");
 
                 foreach (var group in groups)
                 {
