@@ -62,16 +62,20 @@
             this._rtbMetadata.Size = new System.Drawing.Size(140, 261);
             this._rtbMetadata.TabIndex = 0;
             this._rtbMetadata.Text = "";
+            this._rtbMetadata.WordWrap = false;
             this._rtbMetadata.TextChanged += new System.EventHandler(this._rtbMetadata_TextChanged);
             // 
             // _rtbXML
             // 
+            this._rtbXML.BackColor = System.Drawing.SystemColors.Window;
             this._rtbXML.Dock = System.Windows.Forms.DockStyle.Fill;
             this._rtbXML.Location = new System.Drawing.Point(0, 0);
             this._rtbXML.Name = "_rtbXML";
+            this._rtbXML.ReadOnly = true;
             this._rtbXML.Size = new System.Drawing.Size(140, 261);
             this._rtbXML.TabIndex = 0;
             this._rtbXML.Text = "";
+            this._rtbXML.WordWrap = false;
             // 
             // Metadata2Xml
             // 
@@ -81,6 +85,7 @@
             this.Controls.Add(this._splitContainer);
             this.Name = "Metadata2Xml";
             this.Text = "Metadata2Xml";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this._splitContainer.Panel1.ResumeLayout(false);
             this._splitContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this._splitContainer)).EndInit();
